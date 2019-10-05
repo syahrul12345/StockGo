@@ -11,11 +11,14 @@ bot.hears(/^\/([a-z0-9]+$)/i, async (ctx) => {
         let replyString = `Failed to get the price of ${ticker} stock. \nPlease use only stocks registered by Yahoo Finance.`
         ctx.reply(replyString)
     }else{
-        let curPrice = dataArray[0]
-        let prevPrice = dataArray[1]
+        let currency = dataArray[0]
+        let instrumentType = dataArray[1]
+        let symbol = dataArray[2]
+        let curPrice = dataArray[3]
+        let prevPrice = dataArray[4]
         let diff = Math.round((curPrice - prevPrice)*100) / 100
         let percentageDiff = Math.round((diff/prevPrice)*100*100)/100
-        replyString = `Price of ${ticker} stock: \nUS\$${curPrice} (\$${diff},${percentageDiff}%)`
+        replyString = `Price of ${symbol} stock: \n${currency} ${curPrice} (\$${diff},${percentageDiff}%)\nType: ${instrumentType} `
         ctx.reply(replyString)
     }
     
