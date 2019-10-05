@@ -13,8 +13,6 @@ const getPrice = async (ticker) => {
 }
 const getFromAPI = async (baseUrl) => {
     return axios.get(baseUrl).then((response) => {
-        console.log("resposne")
-        // console.log(response.data.chart.result[0].meta)
         return [response.data.chart.result[0].meta.regularMarketPrice,response.data.chart.result[0].meta.chartPreviousClose]
     }).catch(() => {
         return false

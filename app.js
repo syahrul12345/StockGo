@@ -15,7 +15,7 @@ bot.hears(/^\/([a-z0-9]+$)/i, async (ctx) => {
         let prevPrice = dataArray[1]
         let diff = Math.round((curPrice - prevPrice)*100) / 100
         let percentageDiff = Math.round((diff/prevPrice)*100*100)/100
-        replyString = `Price of ${ticker} stock: \nUS\$${curPrice} (\$${diff})`
+        replyString = `Price of ${ticker} stock: \nUS\$${curPrice} (\$${diff},${percentageDiff}%)`
         ctx.reply(replyString)
     }
     
